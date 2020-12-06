@@ -1,14 +1,17 @@
-with open("day1/input.txt") as f:
-    ns = [int(n.strip()) for n in f.readlines()]
+from pz1 import *
 
-for ln in ns:
-    found = False
-    nn = 2020 - ln
-    for sn in ns:
-        if nn - sn in ns:
-            print(ln * sn * (nn - sn))
-            found = True
-            break
 
-    if found:
-        break
+def main():
+    pwds = []
+    with open("day1/input.txt") as f:
+        line = f.readline()
+        while line != "":
+            pwds.append(Pwd(line))
+            line = f.readline()
+
+    pwds = [p.is_valid2() for p in pwds]
+    print(sum(pwds))
+
+
+if __name__ == "__main__":
+    main()
