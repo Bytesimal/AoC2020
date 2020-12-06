@@ -1,22 +1,47 @@
-class PwdPolicy:
-    def __init__(self, s):
-        spl = s.split()
-        self.pwd = spl[2]
-        rge = spl[0].split("-")
-        self.min = int(rge[0])
-        self.max = int(rge[1])
-        self.char = spl[1][:-1]
-
-    def is_valid(self):
-        return self.min <= self.pwd.count(self.char) <= self.max
+import numpy as np
 
 
-pwds = []
-with open("day2/input.txt") as f:
-    line = f.readline()
-    while line != "":
-        pwds.append(PwdPolicy(line))
-        line = f.readline()
+class Env:
+    def __init__(self, path):
+        tmp_pattern = []
+        with open(path) as f:
+            line = f.readline().strip()
+            while line != "":
+                tmp_pattern.append(line)
+                line = f.readline().strip()
 
-pwds = [p.is_valid() for p in pwds]
-print(sum(pwds))
+        self.width = len(tmp_pattern[0])
+        self.depth = len(tmp_pattern)
+
+        # create np array
+        self.pattern = np.empty((self.depth, self.width), dtype=np.object)
+        for r, row in enumerate(tmp_pattern):
+            for c, val in enumerate(row):
+                self.pattern[r, c] = val
+
+    def at_coord(self, x, y):
+        res_x = int(x - np.floor(x / self.width) * self.width)
+        return self.pattern[y, res_x]
+
+
+def traverse(env, *traverse_vector):
+    nx, ny = 0, 0
+    n_trees = 0
+
+    while ny < env.depth:
+        if env.at_coord(nx, ny) == "#":
+            n_trees += 1
+
+        nx += traverse_vector[0]
+        ny += traverse_vector[1]
+
+    return n_trees
+
+
+def main():
+    environment = Env("day2/input.txt")
+    print(traverse(environment, 3, 1))
+
+
+if __name__ == "__main__":
+    main()
