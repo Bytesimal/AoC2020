@@ -17,7 +17,7 @@ class Pwd:
 
 def main():
     pwds = []
-    with open("day2/input.txt") as f:
+    with open("input.txt") as f:
         line = f.readline()
         while line != "":
             pwds.append(Pwd(line))

@@ -38,8 +38,10 @@ def traverse(env, *traverse_vector):
     return n_trees
 
 
+environment = Env("input.txt")
+
+
 def main():
-    environment = Env("day3/input.txt")
     print(traverse(environment, 3, 1))
 
 
