@@ -1,46 +1,30 @@
-import numpy as np
+class Pwd:
+    def __init__(self, s):
+        spl = s.split()
+        self.pwd = spl[2]
+        rge = spl[0].split("-")
+        self.pos1 = int(rge[0]) - 1
+        self.pos2 = int(rge[1]) - 1
+        self.char = spl[1][:-1]
 
+    def is_valid1(self):
+        return self.pos1 <= self.pwd.count(self.char) <= self.pos2
 
-class Env:
-    def __init__(self, path):
-        tmp_pattern = []
-        with open(path) as f:
-            line = f.readline().strip()
-            while line != "":
-                tmp_pattern.append(line)
-                line = f.readline().strip()
-
-        self.width = len(tmp_pattern[0])
-        self.depth = len(tmp_pattern)
-
-        # create np array
-        self.pattern = np.empty((self.depth, self.width), dtype=np.object)
-        for r, row in enumerate(tmp_pattern):
-            for c, val in enumerate(row):
-                self.pattern[r, c] = val
-
-    def at_coord(self, x, y):
-        res_x = int(x - np.floor(x / self.width) * self.width)
-        return self.pattern[y, res_x]
-
-
-def traverse(env, *traverse_vector):
-    nx, ny = 0, 0
-    n_trees = 0
-
-    while ny < env.depth:
-        if env.at_coord(nx, ny) == "#":
-            n_trees += 1
-
-        nx += traverse_vector[0]
-        ny += traverse_vector[1]
-
-    return n_trees
+    def is_valid2(self):
+        # Use XOR logic "one but not the other"
+        return (self.pwd[self.pos1] == self.char) ^ (self.pwd[self.pos2] == self.char)
 
 
 def main():
-    environment = Env("day2/input.txt")
-    print(traverse(environment, 3, 1))
+    pwds = []
+    with open("day2/input.txt") as f:
+        line = f.readline()
+        while line != "":
+            pwds.append(Pwd(line))
+            line = f.readline()
+
+    pwds = [p.is_valid1() for p in pwds]
+    print(sum(pwds))
 
 
 if __name__ == "__main__":
