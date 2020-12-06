@@ -27,7 +27,8 @@ def seat_coords(bin_spc):
 
 
 with open("input.txt") as f:
-    seat_ids = [seat_coords(e)[2] for e in f.readlines()]
+    passes = [s.strip() for s in f.readlines()]
+seat_ids = [seat_coords(e)[2] for e in passes]
 
 
 def main():
