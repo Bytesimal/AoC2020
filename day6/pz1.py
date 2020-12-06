@@ -7,6 +7,7 @@ def main():
 
     for g in groups:
         opt = set([])
+
         for rsp in g:
             for c in rsp:
                 opt.add(c)
