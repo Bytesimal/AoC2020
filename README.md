@@ -8,5 +8,5 @@ that the dependencies with previous puzzles are found as well as allowing the pr
 which is unique to the user.
 
 For those of you who are trying to test my algorithms with custom inputs, simply put your custom input text in the input
-files to see what happens. Learners who want to see how my code works or may function better than theirs are welcome.
+files to see what happens. Learners who want to see how my code works or is better than theirs are welcome here.
 Cheaters, on the other hand, are not. If you fit into the latter demographic, GO AWAY!
