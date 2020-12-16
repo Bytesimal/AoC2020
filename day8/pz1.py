@@ -9,28 +9,38 @@ with open("input.txt") as f:
     instrs = [Instr(ln) for ln in f.readlines()]
 
 
-def looping():
+def is_looping():
     acc = 0
-    cursor = 0
-    while True:
-        instrs[cursor].exec_count += 1
-        # check if running twice
-        if cursor >= len(instrs) - 100:
-            # terminated
-            return False, acc
-        if instrs[cursor].exec_count > 1:
-            return True, acc
+    cur = 0
+    rsp = False
 
-        if instrs[cursor].cmd == "acc":
-            acc += instrs[cursor].val
-        elif instrs[cursor].cmd == "jmp":
-            cursor += instrs[cursor].val - 1
-        cursor += 1
+    while True:
+        if cur >= len(instrs):
+            # terminated
+            break
+        instrs[cur].exec_count += 1
+        if instrs[cur].exec_count > 1:
+            # check if running twice
+            rsp = True
+            break
+
+        if instrs[cur].cmd == "acc":
+            acc += instrs[cur].val
+        elif instrs[cur].cmd == "jmp":
+            cur += instrs[cur].val
+            continue
+        cur += 1
+
+    # Reset exec counts
+    for i in instrs:
+        i.exec_count = 0
+
+    return rsp, acc
 
 
 def main():
-    rs, acc = looping()
-    if rs:
+    il, acc = is_looping()
+    if il:
         print(acc)
 
 
