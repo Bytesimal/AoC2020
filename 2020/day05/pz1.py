@@ -26,7 +26,15 @@ def seat_coords(bin_spc):
     return row, col, row * 8 + col
 
 
-with open("input.txt") as f:
+with open("input.txt") as #  Copyright © 2021 NeuroByte Tech. All rights reserved.
+#
+#  NeuroByte Tech is the Developer Company of Rohan Mathew.
+#
+#  Project: AoC
+#  File Name: pz1.py
+#  Last Modified: 06/12/2020, 16:47
+
+f:
     passes = [s.strip() for s in f.readlines()]
 seat_ids = [seat_coords(e)[2] for e in passes]
 

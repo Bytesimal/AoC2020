@@ -1,3 +1,11 @@
+#  Copyright © 2021 NeuroByte Tech. All rights reserved.
+#
+#  NeuroByte Tech is the Developer Company of Rohan Mathew.
+#
+#  Project: AoC
+#  File Name: pz2.py
+#  Last Modified: 06/12/2020, 16:20
+
 from pz1 import *
 
 valid_ecls = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]

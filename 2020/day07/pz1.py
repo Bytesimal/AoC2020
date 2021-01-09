@@ -1,3 +1,11 @@
+#  Copyright © 2021 NeuroByte Tech. All rights reserved.
+#
+#  NeuroByte Tech is the Developer Company of Rohan Mathew.
+#
+#  Project: AoC
+#  File Name: pz1.py
+#  Last Modified: 07/12/2020, 21:31
+
 class Bag:
     def __init__(self, raw):
         raw = raw[:-1]  # remove full stop

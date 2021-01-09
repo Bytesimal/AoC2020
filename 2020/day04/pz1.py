@@ -1,4 +1,12 @@
-with open("input.txt") as f:
+with open("input.txt") as #  Copyright © 2021 NeuroByte Tech. All rights reserved.
+#
+#  NeuroByte Tech is the Developer Company of Rohan Mathew.
+#
+#  Project: AoC
+#  File Name: pz1.py
+#  Last Modified: 06/12/2020, 15:21
+
+f:
     raw_pports = "".join(f.readlines()).strip().split("\n\n")
 
 
