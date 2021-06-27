@@ -1,7 +1,6 @@
 # [Advent of Code 2020](https://adventofcode.com/2020)
 
-This repository contains my solutions for the Advent of Code 2020 challenge. I implore you to refrain from mocking the
-inefficiency of my code :) but will absolutely welcome any improvements through pull requests.
+This repository contains my solutions for the Advent of Code 2020 challenge. Please don't mock the inefficiency of my code :) but I welcome any improvements through pull requests.
 
 This project is written in Python 3 and it is recommended that you run the individual puzzle files in their directory so
 that the dependencies with previous puzzles are found as well as allowing the programs to find the custom input text
